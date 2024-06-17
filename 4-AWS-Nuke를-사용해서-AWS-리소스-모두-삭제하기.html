@@ -1,0 +1,84 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>AWS Nuke를 사용해서 AWS 리소스 모두 삭제하기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">AWS Nuke를 사용해서 AWS 리소스 모두 삭제하기</h2>
+                                <div class="box-info">
+                                    <p class="category">Aws</p>
+                                    <p class="date">2024-04-13 17:18:39</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size18">Aws Nuke는 코드를 이용해서 Aws리소스를 삭제하도록 도와주는 프로그램입니다.</p>
+<p data-ke-size="size18">&nbsp;</p>
+<p data-ke-size="size18"><b><a href="https://github.com/rebuy-de/aws-nuke/releases" target="_blank" rel="noopener">Github 링크</a></b></p>
+<p data-ke-size="size18">우선 Aws Nuke를 사용하기 위해 위의 링크로 접속하여</p>
+<p data-ke-size="size18">최신버전의 <b><u>Nuke.exe</u></b>를 다운로드 해줍니다.</p>
+<p data-ke-size="size18">&nbsp;</p>
+<pre id="code_1702972926167" class="ebnf" style="background-color: #f8f8f8; color: #383a42; text-align: start;" data-ke-type="codeblock" data-ke-language="bash"><code>aws configure</code></pre>
+<p data-ke-size="size18">다운로드 완료 후 AWS 자격증명을 해줍니다.</p>
+<p data-ke-size="size18">&nbsp;</p>
+<pre id="code_1702972924137" class="applescript" style="background-color: #f8f8f8; color: #383a42; text-align: start;" data-ke-type="codeblock" data-ke-language="bash"><code>aws iam list-account-aliases</code></pre>
+<p data-ke-size="size18">사용자 별칭의 유뮤를 확인해줍니다.</p>
+<p data-ke-size="size18">사용자 별칭은 <u>IAM 상단</u> <u>오른쪽</u> "<u><b>AWS 계정</b></u>"에서도 확인할 수 있습니다.</p>
+<p data-ke-size="size18">&nbsp;</p>
+<pre id="code_1702972826577" class="json" style="background-color: #f8f8f8; color: #383a42; text-align: start;" data-ke-type="codeblock" data-ke-language="bash"><code>{
+    "AccountAliases": [ ]
+}</code></pre>
+<p data-ke-size="size18">&nbsp;</p>
+<pre id="code_1702972982209" class="bash" data-ke-language="bash" data-ke-type="codeblock"><code>aws iam create-account-alias --account-alias &lt;사용자 별칭&gt;</code></pre>
+<p data-ke-size="size18">만약 <u><b>별칭이 없다면</b></u></p>
+<p data-ke-size="size18">위의 명령어를 이용하여 별칭을 생성할 수 있습니다.</p>
+<p data-ke-size="size18">&nbsp;</p>
+<p data-ke-size="size18">&nbsp;</p>
+<p data-ke-size="size18"><b>config.yml</b></p>
+<pre id="code_1702973023180" class="bash" data-ke-language="bash" data-ke-type="codeblock"><code>regions:  
+- ap-northeast-2 # 삭제를 원하는 리전
+
+account-blacklist:
+- "999999999999" # production
+
+accounts:
+  "사용자 아이디": {}</code></pre>
+<p data-ke-size="size18">&nbsp;</p>
+<p data-ke-size="size18">사용자 별칭 프로파일에 대한 자격증명을 인증해줍니다.</p>
+<pre id="code_1702973321201" class="bash" data-ke-language="bash" data-ke-type="codeblock"><code>aws configure --profile &lt;사용자 별칭&gt;</code></pre>
+<p data-ke-size="size18">&nbsp;</p>
+<p data-ke-size="size18">아래의 명령어를 실행하면 AWS NUKE가 모든 AWS 리소스를 삭제해줍니다.</p>
+<pre id="code_1702973458628" class="bash" data-ke-language="bash" data-ke-type="codeblock"><code>.\&lt;다운받은 exe파일 이름&gt; -c .\config.yml --no-dry-run --profile &lt;사용자 별칭&gt;</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>
